@@ -1,0 +1,12 @@
+# Terraform 
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# Kubeconfig 
+*.kubeconfig
+k3s-config
+
+# macOS
+.DS_Store
