@@ -22,7 +22,7 @@ resource "kubernetes_deployment" "app_deployment" {
 
   spec {
     replicas = 2
-    
+
     selector {
       match_labels = {
         app = "homelab-app"
@@ -49,7 +49,6 @@ resource "kubernetes_deployment" "app_deployment" {
   }
 }
 
-
 resource "kubernetes_service" "cluster_ip_service" {
   metadata {
     name      = "my-app-service"
@@ -69,3 +68,35 @@ resource "kubernetes_service" "cluster_ip_service" {
     type = "ClusterIP"
   }
 }
+
+resource "kubernetes_ingress_v1" "app_ingress" {
+  metadata {
+    name      = "my-app-ingress"
+    namespace = kubernetes_namespace.app_namespace.metadata[0].name
+    annotations = {
+      "traefik.ingress.kubernetes.io/router.entrypoints" = "web"
+    }
+  }
+
+  spec {
+    rule {
+      host = "nginx.homelab"
+
+      http {
+        path {
+          path = "/"
+          path_type = "Prefix"
+          backend {
+            service {
+              name = kubernetes_service.cluster_ip_service.metadata[0].name
+              port {
+                number = 80
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
