@@ -7,5 +7,5 @@ variable "kubeconfig_path" {
 variable namespace {
   description = "Namespace Kubernetes cible"
   type        = string
-  default     = "default"
+  default     = "homelab"
 }

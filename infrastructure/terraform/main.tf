@@ -7,3 +7,9 @@ provider "helm" {
     config_path = var.kubeconfig_path
   }
 }
+
+resource "kubernetes_namespace" "app_namespace" {
+  metadata {
+    name = var.namespace
+  }
+}
