@@ -12,8 +12,8 @@ Stack : K3s · Terraform · GitHub Actions · ArgoCD
 ## Phases
 - [x] Phase 1 — K3s local avec Multipass
 - [x] Phase 2 — Objets Kubernetes de base (Pod, Deployment, Service, Ingress)
-- [ ] Phase 3 — Terraform (en cours)
-- [ ] Phase 4 — CI/CD GitOps (GitHub Actions + ArgoCD)
+- [x] Phase 3 — Terraform 
+- [ ] Phase 4 — CI/CD GitOps (GitHub Actions + ArgoCD) (en cours)
 - [ ] Phase 5 — Apps colocation
 - [ ] Phase 6 — Observabilité (Prometheus + Grafana)
 
