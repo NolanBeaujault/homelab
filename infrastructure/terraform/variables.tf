@@ -4,7 +4,7 @@ variable "kubeconfig_path" {
   default     = "~/.kube/k3s-config"
 }
 
-variable namespace {
+variable "namespace" {
   description = "Namespace Kubernetes cible"
   type        = string
   default     = "homelab"
