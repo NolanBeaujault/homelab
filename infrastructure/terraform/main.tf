@@ -100,3 +100,18 @@ resource "kubernetes_ingress_v1" "app_ingress" {
   }
 }
 
+resource "kubernetes_namespace" "argocd_namespace" {
+  metadata {
+    name = "argocd"
+  }
+}
+
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  version    = "7.3.11"
+  namespace = kubernetes_namespace.argocd_namespace.metadata[0].name
+  depends_on = [kubernetes_namespace.argocd_namespace]
+
+}
