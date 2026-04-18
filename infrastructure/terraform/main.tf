@@ -111,7 +111,7 @@ resource "helm_release" "argocd" {
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
   version    = "7.3.11"
-  namespace = kubernetes_namespace.argocd_namespace.metadata[0].name
+  namespace  = kubernetes_namespace.argocd_namespace.metadata[0].name
   depends_on = [kubernetes_namespace.argocd_namespace]
 
 }
